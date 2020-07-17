@@ -1,25 +1,14 @@
 <template>
   <!-- list kanban -->
-  <div
-    id="list-kanban"
-    style="margin-top: 20px; justify-content: space-around;"
-  >
+  <div id="list-kanban" style="margin-top: 20px; justify-content: space-around;">
     <div style="margin-left: 10px; margin-right: 10px;">
       <div class="row">
         <!-- Backlog kanban -->
         <div class="col-sm-3">
           <div style="background-color: white;">
             <div class>
-              <div
-                class="cardHeader"
-                style="background-color: #042549; padding: 0px;"
-              >
-                <h5
-                  class="card-title"
-                  style="margin: 0; color: white; padding: 15px 20px;"
-                >
-                  Backlog
-                </h5>
+              <div class="cardHeader" style="background-color: #042549; padding: 0px;">
+                <h5 class="card-title" style="margin: 0; color: white; padding: 15px 20px;">Backlog</h5>
               </div>
               <div
                 class="content-Backlog"
@@ -53,19 +42,14 @@
                   ></textarea>
                 </div>
               </div>
-              <div
-                class="add-todo"
-                style="background-color: #042549; padding: 10px 10px;"
-              >
+              <div class="add-todo" style="background-color: #042549; padding: 10px 10px;">
                 <div v-if="!checkBacklog" class="add-add">
                   <button
                     type="button"
                     class="btn btn-secondary"
                     v-on:click="addBacklog"
                     style="margin: 0;"
-                  >
-                    Add Task
-                  </button>
+                  >Add Task</button>
                 </div>
                 <div v-else class="add-add-inside">
                   <button
@@ -73,17 +57,13 @@
                     class="btn btn-success"
                     v-on:click.prevent="saveBacklog"
                     style="margin: 0;"
-                  >
-                    Save
-                  </button>
+                  >Save</button>
                   <button
                     type="button"
                     class="btn btn-secondary"
                     v-on:click="exitBacklog"
                     style="margin: 0;"
-                  >
-                    Exit
-                  </button>
+                  >Exit</button>
                 </div>
               </div>
             </div>
@@ -93,16 +73,8 @@
         <div class="col-sm-3">
           <div style="background-color: white;">
             <div class>
-              <div
-                class="cardHeader"
-                style="background-color: #042549; padding: 0px;"
-              >
-                <h5
-                  class="card-title"
-                  style="margin: 0; color: white; padding: 15px 20px;"
-                >
-                  Todo
-                </h5>
+              <div class="cardHeader" style="background-color: #042549; padding: 0px;">
+                <h5 class="card-title" style="margin: 0; color: white; padding: 15px 20px;">Todo</h5>
               </div>
               <div
                 class="content-todo"
@@ -135,19 +107,14 @@
                   ></textarea>
                 </div>
               </div>
-              <div
-                class="add-todo"
-                style="background-color: #042549; padding: 10px 10px;"
-              >
+              <div class="add-todo" style="background-color: #042549; padding: 10px 10px;">
                 <div v-if="!checkTodo" class="add-add">
                   <button
                     type="button"
                     class="btn btn-secondary"
                     v-on:click="addTodo"
                     style="margin: 0;"
-                  >
-                    Add Task
-                  </button>
+                  >Add Task</button>
                 </div>
                 <div v-else class="add-add-inside">
                   <button
@@ -155,17 +122,13 @@
                     class="btn btn-success"
                     v-on:click.prevent="saveTodo"
                     style="margin: 0;"
-                  >
-                    Save
-                  </button>
+                  >Save</button>
                   <button
                     type="button"
                     class="btn btn-secondary"
                     v-on:click="exitTodo"
                     style="margin: 0;"
-                  >
-                    Exit
-                  </button>
+                  >Exit</button>
                 </div>
               </div>
             </div>
@@ -175,16 +138,8 @@
         <div class="col-sm-3">
           <div style="background-color: white;">
             <div class>
-              <div
-                class="cardHeader"
-                style="background-color: #042549; padding: 0px;"
-              >
-                <h5
-                  class="card-title"
-                  style="margin: 0; color: white; padding: 15px 20px;"
-                >
-                  Done
-                </h5>
+              <div class="cardHeader" style="background-color: #042549; padding: 0px;">
+                <h5 class="card-title" style="margin: 0; color: white; padding: 15px 20px;">Done</h5>
               </div>
               <div
                 class="content-done"
@@ -216,19 +171,14 @@
                   ></textarea>
                 </div>
               </div>
-              <div
-                class="add-done"
-                style="background-color: #042549; padding: 10px 10px;"
-              >
+              <div class="add-done" style="background-color: #042549; padding: 10px 10px;">
                 <div v-if="!checkDone" class="add-add">
                   <button
                     type="button"
                     class="btn btn-secondary"
                     v-on:click="addDone"
                     style="margin: 0;"
-                  >
-                    Add Task
-                  </button>
+                  >Add Task</button>
                 </div>
                 <div v-else class="add-add-inside">
                   <button
@@ -236,17 +186,13 @@
                     class="btn btn-success"
                     v-on:click.prevent="saveDone"
                     style="margin: 0;"
-                  >
-                    Save
-                  </button>
+                  >Save</button>
                   <button
                     type="button"
                     class="btn btn-secondary"
                     v-on:click="exitDone"
                     style="margin: 0;"
-                  >
-                    Exit
-                  </button>
+                  >Exit</button>
                 </div>
               </div>
             </div>
@@ -256,16 +202,11 @@
         <div class="col-sm-3">
           <div style="background-color: white;">
             <div class>
-              <div
-                class="cardHeader"
-                style="background-color: #042549; padding: 0px;"
-              >
+              <div class="cardHeader" style="background-color: #042549; padding: 0px;">
                 <h5
                   class="card-title"
                   style="margin: 0; color: white; padding: 15px 20px;"
-                >
-                  Completed
-                </h5>
+                >Completed</h5>
               </div>
               <div
                 class="content-completed"
@@ -297,19 +238,14 @@
                   ></textarea>
                 </div>
               </div>
-              <div
-                class="add-todo"
-                style="background-color: #042549; padding: 10px 10px;"
-              >
+              <div class="add-todo" style="background-color: #042549; padding: 10px 10px;">
                 <div v-if="!checkCompleted" class="add-add">
                   <button
                     type="button"
                     class="btn btn-secondary"
                     v-on:click="addCompleted"
                     style="margin: 0;"
-                  >
-                    Add Task
-                  </button>
+                  >Add Task</button>
                 </div>
                 <div v-else class="add-add-inside">
                   <button
@@ -317,17 +253,13 @@
                     class="btn btn-success"
                     v-on:click.prevent="saveCompleted"
                     style="margin: 0;"
-                  >
-                    Save
-                  </button>
+                  >Save</button>
                   <button
                     type="button"
                     class="btn btn-secondary"
                     v-on:click="exitCompleted"
                     style="margin: 0;"
-                  >
-                    Exit
-                  </button>
+                  >Exit</button>
                 </div>
               </div>
             </div>
@@ -356,7 +288,7 @@ export default {
       checkDone: false,
       checkUpdateDone: false,
       checkCompleted: false,
-      checkUpdateCompleted: false,
+      checkUpdateCompleted: false
     };
   },
   methods: {
@@ -378,21 +310,21 @@ export default {
       const category = "Backlog";
       axios({
         method: "POST",
-        url: "http://localhost:3000/tasks",
+        url: "https://lit-mountain-74451.herokuapp.com/tasks",
         headers: { access_token: localStorage.access_token },
         data: {
           title: Backlog,
-          category: category,
-        },
+          category: category
+        }
       })
-        .then((result) => {
+        .then(result => {
           console.log("ini result");
           this.checkBacklog = false;
           this.$emit("requestAdd", "success");
           swal("Succesfully Add!", "", "success");
           // this.getTask();
         })
-        .catch((err) => {
+        .catch(err => {
           console.log(err.response, "oomomo");
         });
     },
@@ -410,20 +342,20 @@ export default {
       const category = "Todo";
       axios({
         method: "POST",
-        url: "http://localhost:3000/tasks",
+        url: "https://lit-mountain-74451.herokuapp.com/tasks",
         headers: { access_token: localStorage.access_token },
         data: {
           title: todo,
-          category: category,
-        },
+          category: category
+        }
       })
-        .then((result) => {
+        .then(result => {
           this.checkTodo = false;
           this.$emit("requestAdd", "success");
           swal("Succesfully Add!", "", "success");
           // this.getTask();
         })
-        .catch((err) => {});
+        .catch(err => {});
     },
     exitTodo() {
       this.checkTodo = false;
@@ -436,20 +368,20 @@ export default {
       const category = "Done";
       axios({
         method: "POST",
-        url: "http://localhost:3000/tasks",
+        url: "https://lit-mountain-74451.herokuapp.com/tasks",
         headers: { access_token: localStorage.access_token },
         data: {
           title: done,
-          category: category,
-        },
+          category: category
+        }
       })
-        .then((result) => {
+        .then(result => {
           this.checkDone = false;
           this.$emit("requestAdd", "success");
           swal("Succesfully Add!", "", "success");
           // this.getTask();
         })
-        .catch((err) => {});
+        .catch(err => {});
     },
     exitDone() {
       this.checkDone = false;
@@ -463,20 +395,20 @@ export default {
       const category = "Completed";
       axios({
         method: "POST",
-        url: "http://localhost:3000/tasks",
+        url: "https://lit-mountain-74451.herokuapp.com/tasks",
         headers: { access_token: localStorage.access_token },
         data: {
           title: completed,
-          category: category,
-        },
+          category: category
+        }
       })
-        .then((result) => {
+        .then(result => {
           this.checkCompleted = false;
           this.$emit("requestAdd", "success");
           swal("Succesfully Add!", "", "success");
           // this.getTask();
         })
-        .catch((err) => {});
+        .catch(err => {});
     },
     exitCompleted() {
       this.checkCompleted = false;
@@ -489,7 +421,7 @@ export default {
         }
       }
       return filterData;
-    },
+    }
   },
   computed: {
     BacklogData() {
@@ -507,13 +439,13 @@ export default {
     completedData() {
       console.log("completed");
       return this.filterData("Completed");
-    },
+    }
   },
   created() {},
   components: {
     CardCategory: CardCategory,
-    formAdd: formAdd,
-  },
+    formAdd: formAdd
+  }
 };
 </script>
 

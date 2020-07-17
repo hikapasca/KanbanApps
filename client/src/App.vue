@@ -2,11 +2,7 @@
   <div class="layout" id="layout">
     <div class="beforeLogin" v-if="!isLoggedIn">
       <Register v-if="statusRegisterLogin" @status="status"></Register>
-      <Login
-        v-if="!statusRegisterLogin"
-        @statusLogin="statusLogin"
-        @status="status"
-      ></Login>
+      <Login v-if="!statusRegisterLogin" @statusLogin="statusLogin" @status="status"></Login>
     </div>
     <!-- home layout -->
     <div
@@ -41,7 +37,7 @@ export default {
     return {
       statusRegisterLogin: false,
       isLoggedIn: false,
-      collectData: [],
+      collectData: []
     };
   },
   methods: {
@@ -73,20 +69,20 @@ export default {
       console.log("line 43");
       axios({
         method: "GET",
-        url: "http://localhost:3000/tasks",
-        headers: { access_token: localStorage.access_token },
+        url: "https://lit-mountain-74451.herokuapp.com/tasks",
+        headers: { access_token: localStorage.access_token }
       })
-        .then((result) => {
+        .then(result => {
           console.log("check");
           this.collectData = result.data;
         })
-        .catch((err) => {
+        .catch(err => {
           console.log(err, "ini error asa");
         })
         .finally(() => {
           console.log("finally");
         });
-    },
+    }
   },
   computed: {},
   created() {
@@ -103,8 +99,8 @@ export default {
     Login: Login,
     NavbarAfterLogin: NavbarAfterLogin,
     // NavbarBeforelogin: NavbarBeforelogin,
-    ListKanban: ListKanban,
-  },
+    ListKanban: ListKanban
+  }
 };
 </script>
 

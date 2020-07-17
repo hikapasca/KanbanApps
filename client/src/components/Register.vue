@@ -80,7 +80,7 @@ export default {
       const password = this.passwordRegister;
       axios({
         method: "post",
-        url: "http://localhost:3000/register",
+        url: "https://lit-mountain-74451.herokuapp.com/register",
         data: {
           email: email,
           password: password
