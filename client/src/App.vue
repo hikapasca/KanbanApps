@@ -1,9 +1,9 @@
 <template>
   <div class="layout" id="layout">
     <div class="beforeLogin" v-if="!isLoggedIn">
-      <Register v-if="statusRegisterLogin" @status="status"></Register>
+      <Register v-if="viewStatus" @status="status"></Register>
       <Login
-        v-if="!statusRegisterLogin"
+        v-if="!viewStatus"
         @statusLogin="statusLogin"
         @status="status"
       ></Login>
@@ -32,13 +32,12 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import NavbarAfterLogin from "./components/NavbarAfterLogin";
 import CardKanban from "./components/CardKanban.vue";
-import ListKanban from "./components/ListKanban";
 
 export default {
   name: "app",
   data() {
     return {
-      statusRegisterLogin: false,
+      viewStatus: false,
       isLoggedIn: false,
       collectData: [],
     };
@@ -51,7 +50,7 @@ export default {
     },
     status(params) {
       console.log(params, "ini params");
-      this.statusRegisterLogin = params;
+      this.viewStatus = params;
     },
     requestLogout(params) {
       this.isLoggedIn = params;
@@ -101,8 +100,6 @@ export default {
     Register: Register,
     Login: Login,
     NavbarAfterLogin: NavbarAfterLogin,
-    // NavbarBeforelogin: NavbarBeforelogin,
-    ListKanban: ListKanban,
     CardKanban,
   },
 };

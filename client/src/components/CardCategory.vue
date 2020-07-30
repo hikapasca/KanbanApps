@@ -1,202 +1,174 @@
 <template>
   <div>
-    <div
-      class="inside-task"
-      v-if="!checkUpdateTask"
-      style="
+    <div>
+      <div style="background-color: white;">
+        <div class>
+          <div
+            class="cardHeader"
+            style="background-color: #042549; padding: 0px;"
+          >
+            <h5
+              class="card-title"
+              style="margin: 0; color: white; padding: 15px 20px;"
+            >
+              {{ data.name }}
+            </h5>
+          </div>
+          <div
+            class="content-Backlog"
+            style="
+                      background-color: #edeef1;
+                      overflow: scroll;
+                      width: auto;
+                      height: 480px;
+                    "
+          >
+            <CardCategory
+              v-for="item in filterData[data.name]"
+              :key="item.id"
+              :listTask="item"
+              :categoryTask="item.category"
+              @requestDelete="requestDelete"
+              @requestUpdate="requestUpdate"
+              @requestMove="requestMove"
+            ></CardCategory>
+
+            <!-- <formAdd></formAdd> -->
+            <div v-if="checkTask" class="form-add-Backlog">
+              <textarea
+                v-model="valueAddTask"
+                style="
                           background-color: white;
-                          border-radius: 8px;
-                          padding: 5px 10px;
                           margin-left: 15px;
                           margin-top: 10px;
+                          width: 300px;
                         "
-    >
-      <p style="font-size: 20px; margin: 1;">{{ listTask.title }}</p>
-
-      <p style="color: #9f978f; font-size: 15px; margin: 0;">By: siapa gitu</p>
-      <!-- <p style="font-size: 15px; margin: 0;">
-                          By: siapa gitu
-      </p>-->
-      <p style="margin: 0;">
-        Action :
-        <button
-          type="button"
-          class="btn"
-          v-on:click="deleteTask(listTask.id)"
-          style="
-                              font-size: 12px;
-                              padding: 5px 13px;
-                              color: white;
-                              background-color: #042549;
-                            "
-        >
-          Delete
-        </button>
-        <button
-          type="button"
-          class="btn"
-          v-on:click="updateTask(listTask.id)"
-          style="
-                              color: white;
-                              background-color: #042549;
-                              font-size: 12px;
-                              padding: 5px 13px;
-                            "
-        >
-          Update
-        </button>
-        <button
-          type="button"
-          class="btn"
-          v-on:click="moveTask(listTask.id, listTask.title, listTask.category)"
-          style="
-                              color: white;
-                              background-color: #042549;
-                              font-size: 12px;
-                              padding: 5px 13px;
-                            "
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
-          Move
-        </button>
-      </p>
-    </div>
-    <div
-      v-if="checkUpdateTask"
-      style="background-color: bisque; margin-top: 10px;"
-    >
-      <div style="margin-left: 15px;">
-        <textarea
-          v-model="valueEditTask"
-          style="
-                              background-color: white;
-
-                              width: 270px;
-                            "
-        ></textarea>
-        <button
-          v-on:click="saveEditTask(listTask.id)"
-          type="button"
-          class="btn btn-success"
-        >
-          Save
-        </button>
-        <button
-          v-on:click="exitEditTask"
-          type="button"
-          class="btn btn-secondary"
-        >
-          Cancel
-        </button>
+              ></textarea>
+            </div>
+          </div>
+          <div
+            class="add-todo"
+            style="background-color: #042549; padding: 10px 10px;"
+          >
+            <div v-if="!checkTask" class="add-add">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                v-on:click="addTask(data.name)"
+                style="margin: 0;"
+              >
+                Add Task
+              </button>
+            </div>
+            <div v-else class="add-add-inside">
+              <button
+                type="button"
+                class="btn btn-success"
+                v-on:click.prevent="saveTask(data.name)"
+                style="margin: 0;"
+              >
+                Save
+              </button>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                v-on:click="exitTask"
+                style="margin: 0;"
+              >
+                Exit
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import CardCategory from "./CardContent.vue";
 import axios from "axios";
 export default {
-  props: ["listTask", "categoryTask"],
+  props: ["data", "collectData"],
   data() {
     return {
-      valueEditTask: "",
+      valueAddTask: "",
       checkTask: false,
-      checkUpdateTask: false,
     };
   },
   methods: {
-    deleteTask(params) {
-      console.log(params, "ini id");
-      axios({
-        method: "DELETE",
-        url: `https://lit-mountain-74451.herokuapp.com/tasks/${params}`,
-        headers: { access_token: localStorage.access_token },
-      })
-        .then((result) => {
-          this.$emit("requestDelete", "success");
-          swal("Succesfully delete!", "", "success");
-        })
-        .catch((err) => {
-          console.log(err, "ini kegagalan err");
-          swal("Forbidden Access!", "", "error");
-        });
+    requestDelete(params) {
+      this.$emit("requestDelete", "success");
     },
-    updateTask(params) {
-      console.log(params, "ini params");
-      axios({
-        method: "put",
-        url: `https://lit-mountain-74451.herokuapp.com/tasks/${params}`,
-        headers: { access_token: localStorage.access_token },
-      })
-        .then((result) => {
-          this.checkUpdateTask = true;
-          console.log(result.data);
-
-          this.valueEditTask = result.data[1][0].title;
-        })
-        .catch((err) => {
-          swal("Forbidden Access!", "", "error");
-          console.log(err.response, "ini error update");
-        });
+    requestUpdate(params) {
+      this.$emit("requestUpdate", "success");
     },
-    moveTask(id, title, category) {
-      const list = ["Backlog", "Todo", "Done", "Completed", "Backlog"];
-      let newCategory;
-      for (let i = 0; i < list.length; i++) {
-        if (list[i] === category) {
-          newCategory = list[i + 1];
-          break;
-        }
+    requestMove(params) {
+      this.$emit("requestMove", "success");
+    },
+    addTask(category) {
+      if (category === "Backlog") {
+        this.checkTask = true;
+      } else if (category === "Todo") {
+        this.checkTask = true;
+      } else if (category === "Done") {
+        this.checkTask = true;
+      } else if (category === "Completed") {
+        this.checkTask = true;
       }
+    },
+    saveTask(category) {
+      console.log("sssss");
+      const data = this.valueAddTask;
       axios({
-        method: "PUT",
-        url: `https://lit-mountain-74451.herokuapp.com/tasks/${id}`,
-        headers: {
-          access_token: localStorage.access_token,
-        },
+        method: "POST",
+        url: "https://lit-mountain-74451.herokuapp.com/tasks",
+        headers: { access_token: localStorage.access_token },
         data: {
-          title: title,
-          category: newCategory,
+          title: data,
+          category: category,
         },
       })
         .then((result) => {
-          console.log("jeje");
-          this.$emit("requestMove", "success");
-          swal("Succesfully move!", "", "success");
+          console.log("ini result");
+          this.checkTask = false;
+          this.$emit("requestAdd", "success");
+          swal("Succesfully Add!", "", "success");
+          // this.getTask();
         })
         .catch((err) => {
-          swal("Forbidden Access!", "", "error");
-          console.log(err.response, "ono error");
+          console.log(err.response, "oomomo");
         });
     },
-    saveEditTask(params) {
-      const updateTitle = this.valueEditTask;
-      axios({
-        method: "PUT",
-        url: `https://lit-mountain-74451.herokuapp.com/tasks/${params}`,
-        headers: {
-          access_token: localStorage.access_token,
-        },
-        data: {
-          title: updateTitle,
-          category: this.categoryTask,
-        },
-      })
-        .then((result) => {
-          this.checkUpdateTask = false;
-          this.$emit("requestUpdate", "success");
-          swal("Succesfully update!", "", "success");
-        })
-        .catch((err) => {});
+    exitTask() {
+      this.checkTask = false;
     },
-    exitEditTask() {
-      this.checkUpdateTask = false;
+  },
+  computed: {
+    filterData: function() {
+      let data = {};
+      const backlog = this.collectData.filter((word) => {
+        return word.category === "Backlog";
+      });
+      const todo = this.collectData.filter((word) => word.category === "Todo");
+      const done = this.collectData.filter((word) => word.category === "Done");
+      const completed = this.collectData.filter(
+        (word) => word.category === "Completed"
+      );
+      //   filterBacklog.push(backlog);
+      data.Backlog = backlog;
+      data.Todo = todo;
+      data.Done = done;
+      data.Completed = completed;
+      console.log(data);
+      return data;
     },
   },
   created() {
-    // console.log(this.listTask, "ini list task");
+    console.log(this.data, "cek data");
+  },
+  components: {
+    CardCategory,
   },
 };
 </script>

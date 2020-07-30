@@ -121,6 +121,7 @@ export default {
       })
         .then((result) => {
           console.log(result.data);
+          localStorage.userEmail = result.data.userEmail;
           localStorage.access_token = result.data.access_token;
           this.$emit("statusLogin", true);
           console.log(result, "ini result");
@@ -163,7 +164,7 @@ export default {
         .finally(() => {});
 
       // This only gets the user information: id, name, imageUrl and email
-      console.log(googleUser.getBasicProfile());
+      // console.log(googleUser.getBasicProfile());
     },
   },
 };

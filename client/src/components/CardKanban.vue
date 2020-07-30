@@ -24,23 +24,12 @@
 </template>
 
 <script>
-import Card from "./Card.vue";
+import Card from "./CardCategory.vue";
 import axios from "axios";
 export default {
   props: ["collectData"],
   data() {
-    return {
-      valueAddBacklog: "",
-      valueAddTodo: "",
-      valueAddDone: "",
-      valueAddCompleted: "",
-      checkBacklog: false,
-      checkTodo: false,
-      checkDone: false,
-      checkUpdateDone: false,
-      checkCompleted: false,
-      checkUpdateCompleted: false,
-    };
+    return {};
   },
   methods: {
     requestAdd(params) {
