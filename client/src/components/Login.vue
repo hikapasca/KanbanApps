@@ -9,15 +9,24 @@
           background-color: white;
         "
   >
-    <div class="container border" style="width: 500px; background-color: #e5e5e5;">
+    <div
+      class="container border"
+      style="width: 500px; background-color: #e5e5e5;"
+    >
       <nav style="margin-left: 46px; padding-top: 20px;">
-        <a style="font-size: 20px; color: black;" v-on:click="gotoLogin" href="#">Login</a>
+        <a
+          style="font-size: 20px; color: black;"
+          v-on:click="gotoLogin"
+          href="#"
+          >Login</a
+        >
         |
         <a
           style="font-size: 20px; color: black;"
           v-on:click="gotoRegister"
           href="#"
-        >Register</a>
+          >Register</a
+        >
       </nav>
       <hr />
       <div style="padding: 0px 50px 50px 50px;">
@@ -32,20 +41,26 @@
               v-model="emailLogin"
               aria-describedby="emailHelp"
             />
-            <small
-              id="emailHelp"
-              class="form-text text-muted"
-            >We'll never share your email with anyone else.</small>
+            <small id="emailHelp" class="form-text text-muted"
+              >We'll never share your email with anyone else.</small
+            >
           </div>
           <div class="form-group">
             <label for="passwordLogin">Password</label>
-            <input type="password" class="form-control" id="passwordLogin" v-model="passwordLogin" />
+            <input
+              type="password"
+              class="form-control"
+              id="passwordLogin"
+              v-model="passwordLogin"
+            />
           </div>
           <button
             type="submit"
             class="btn"
             style="background-color: #042549; color: white; width: 370px;"
-          >Login</button>
+          >
+            Login
+          </button>
           <p>Or</p>
           <GoogleLogin
             :params="params"
@@ -71,18 +86,18 @@ export default {
       statusRegisterLogin: false,
       params: {
         client_id:
-          "603798192515-glvgho7s38d1a6jakuh0558rve9kgj17.apps.googleusercontent.com"
+          "603798192515-glvgho7s38d1a6jakuh0558rve9kgj17.apps.googleusercontent.com",
       },
       // only needed if you want to render the button with the google ui
       renderParams: {
         width: 250,
         height: 50,
-        longtitle: true
-      }
+        longtitle: true,
+      },
     };
   },
   components: {
-    GoogleLogin
+    GoogleLogin,
   },
   methods: {
     onFailure() {},
@@ -101,10 +116,11 @@ export default {
         url: "https://lit-mountain-74451.herokuapp.com/login",
         data: {
           email: email,
-          password: password
-        }
+          password: password,
+        },
       })
-        .then(result => {
+        .then((result) => {
+          console.log(result.data);
           localStorage.access_token = result.data.access_token;
           this.$emit("statusLogin", true);
           console.log(result, "ini result");
@@ -112,7 +128,7 @@ export default {
           // this.getTask();
           swal("You are Successfully Login!", "", "success");
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err.response);
           console.log(err.response.data);
           swal(err.response.data.message, "", "error");
@@ -131,16 +147,16 @@ export default {
       axios({
         method: "POST",
         url: "http://localhost:3000/googleSignIn",
-        data: { id_token }
+        data: { id_token },
       })
-        .then(result => {
+        .then((result) => {
           console.log(result.data, "ini result");
           localStorage.access_token = result.data.access_token;
           this.$emit("statusLogin", true);
           console.log(result, ">>?>?>?>?>?");
           swal("You are Successfully Login!", "", "success");
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err.response, "aaaaaaa");
           swal(err.response.data.message[0], "", "error");
         })
@@ -148,8 +164,8 @@ export default {
 
       // This only gets the user information: id, name, imageUrl and email
       console.log(googleUser.getBasicProfile());
-    }
-  }
+    },
+  },
 };
 </script>
 

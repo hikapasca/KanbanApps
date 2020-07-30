@@ -10741,7 +10741,7 @@ var _default = {
       var password = this.passwordRegister;
       (0, _axios.default)({
         method: "post",
-        url: "http://localhost:3000/register",
+        url: "https://lit-mountain-74451.herokuapp.com/register",
         data: {
           email: email,
           password: password
@@ -10759,14 +10759,14 @@ var _default = {
   }
 };
 exports.default = _default;
-        var $fbf462 = exports.default || module.exports;
+        var $4f3e3c = exports.default || module.exports;
       
-      if (typeof $fbf462 === 'function') {
-        $fbf462 = $fbf462.options;
+      if (typeof $4f3e3c === 'function') {
+        $4f3e3c = $4f3e3c.options;
       }
     
         /* template */
-        Object.assign($fbf462, (function () {
+        Object.assign($4f3e3c, (function () {
           var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -10946,9 +10946,9 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$fbf462', $fbf462);
+            api.createRecord('$4f3e3c', $4f3e3c);
           } else {
-            api.reload('$fbf462', $fbf462);
+            api.reload('$4f3e3c', $4f3e3c);
           }
         }
 
@@ -11090,12 +11090,13 @@ var _default = {
       var password = this.passwordLogin;
       (0, _axios.default)({
         method: "post",
-        url: "http://localhost:3000/login",
+        url: "https://lit-mountain-74451.herokuapp.com/login",
         data: {
           email: email,
           password: password
         }
       }).then(function (result) {
+        console.log(result.data);
         localStorage.access_token = result.data.access_token;
 
         _this.$emit("statusLogin", true);
@@ -11144,14 +11145,14 @@ var _default = {
   }
 };
 exports.default = _default;
-        var $4d3a16 = exports.default || module.exports;
+        var $bb7f68 = exports.default || module.exports;
       
-      if (typeof $4d3a16 === 'function') {
-        $4d3a16 = $4d3a16.options;
+      if (typeof $bb7f68 === 'function') {
+        $bb7f68 = $bb7f68.options;
       }
     
         /* template */
-        Object.assign($4d3a16, (function () {
+        Object.assign($bb7f68, (function () {
           var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -11339,9 +11340,9 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$4d3a16', $4d3a16);
+            api.createRecord('$bb7f68', $bb7f68);
           } else {
-            api.reload('$4d3a16', $4d3a16);
+            api.reload('$bb7f68', $bb7f68);
           }
         }
 
@@ -11378,25 +11379,25 @@ var _default = {
   methods: {
     logout: function logout() {
       localStorage.clear(); // this.isLoggedIn = false;
+      // var auth2 = gapi.auth2.getAuthInstance();
+      // auth2.signOut().then(function() {
+      //   console.log("User signed out.");
+      // });
 
-      var auth2 = gapi.auth2.getAuthInstance();
-      auth2.signOut().then(function () {
-        console.log("User signed out.");
-      });
       this.$emit("requestLogout", false);
       swal("Succesfully logout!", "", "success");
     }
   }
 };
 exports.default = _default;
-        var $283657 = exports.default || module.exports;
+        var $99edd8 = exports.default || module.exports;
       
-      if (typeof $283657 === 'function') {
-        $283657 = $283657.options;
+      if (typeof $99edd8 === 'function') {
+        $99edd8 = $99edd8.options;
       }
     
         /* template */
-        Object.assign($283657, (function () {
+        Object.assign($99edd8, (function () {
           var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -11453,9 +11454,9 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$283657', $283657);
+            api.createRecord('$99edd8', $99edd8);
           } else {
-            api.reload('$283657', $283657);
+            api.reload('$99edd8', $99edd8);
           }
         }
 
@@ -11591,7 +11592,7 @@ var _default = {
       console.log(params, "ini id");
       (0, _axios.default)({
         method: "DELETE",
-        url: "http://localhost:3000/tasks/".concat(params),
+        url: "https://lit-mountain-74451.herokuapp.com/tasks/".concat(params),
         headers: {
           access_token: localStorage.access_token
         }
@@ -11610,7 +11611,7 @@ var _default = {
       console.log(params, "ini params");
       (0, _axios.default)({
         method: "put",
-        url: "http://localhost:3000/tasks/".concat(params),
+        url: "https://lit-mountain-74451.herokuapp.com/tasks/".concat(params),
         headers: {
           access_token: localStorage.access_token
         }
@@ -11638,7 +11639,7 @@ var _default = {
 
       (0, _axios.default)({
         method: "PUT",
-        url: "http://localhost:3000/tasks/".concat(id),
+        url: "https://lit-mountain-74451.herokuapp.com/tasks/".concat(id),
         headers: {
           access_token: localStorage.access_token
         },
@@ -11663,7 +11664,7 @@ var _default = {
       var updateTitle = this.valueEditTask;
       (0, _axios.default)({
         method: "PUT",
-        url: "http://localhost:3000/tasks/".concat(params),
+        url: "https://lit-mountain-74451.herokuapp.com/tasks/".concat(params),
         headers: {
           access_token: localStorage.access_token
         },
@@ -11682,17 +11683,19 @@ var _default = {
     exitEditTask: function exitEditTask() {
       this.checkUpdateTask = false;
     }
+  },
+  created: function created() {// console.log(this.listTask, "ini list task");
   }
 };
 exports.default = _default;
-        var $e0ddf3 = exports.default || module.exports;
+        var $5da71d = exports.default || module.exports;
       
-      if (typeof $e0ddf3 === 'function') {
-        $e0ddf3 = $e0ddf3.options;
+      if (typeof $5da71d === 'function') {
+        $5da71d = $5da71d.options;
       }
     
         /* template */
-        Object.assign($e0ddf3, (function () {
+        Object.assign($5da71d, (function () {
           var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -11881,9 +11884,9 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$e0ddf3', $e0ddf3);
+            api.createRecord('$5da71d', $5da71d);
           } else {
-            api.reload('$e0ddf3', $e0ddf3);
+            api.reload('$5da71d', $5da71d);
           }
         }
 
@@ -11894,121 +11897,17 @@ render._withStripped = true
       
       }
     })();
-},{"axios":"node_modules/axios/index.js","_css_loader":"../../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.runtime.esm.js"}],"src/components/formAdd.vue":[function(require,module,exports) {
+},{"axios":"node_modules/axios/index.js","_css_loader":"../../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.runtime.esm.js"}],"src/components/Card.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default = {
-  data: function data() {
-    return {
-      valueAdd: ""
-    };
-  }
-};
-exports.default = _default;
-        var $b45eb4 = exports.default || module.exports;
-      
-      if (typeof $b45eb4 === 'function') {
-        $b45eb4 = $b45eb4.options;
-      }
-    
-        /* template */
-        Object.assign($b45eb4, (function () {
-          var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "form-add" }, [
-    _c("textarea", {
-      directives: [
-        {
-          name: "model",
-          rawName: "v-model",
-          value: _vm.valueAdd,
-          expression: "valueAdd"
-        }
-      ],
-      staticStyle: {
-        "background-color": "white",
-        "margin-left": "15px",
-        "margin-top": "10px",
-        width: "300px"
-      },
-      domProps: { value: _vm.valueAdd },
-      on: {
-        input: function($event) {
-          if ($event.target.composing) {
-            return
-          }
-          _vm.valueAdd = $event.target.value
-        }
-      }
-    })
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
 
-          return {
-            render: render,
-            staticRenderFns: staticRenderFns,
-            _compiled: true,
-            _scopeId: null,
-            functional: undefined
-          };
-        })());
-      
-    /* hot reload */
-    (function () {
-      if (module.hot) {
-        var api = require('vue-hot-reload-api');
-        api.install(require('vue'));
-        if (api.compatible) {
-          module.hot.accept();
-          if (!module.hot.data) {
-            api.createRecord('$b45eb4', $b45eb4);
-          } else {
-            api.reload('$b45eb4', $b45eb4);
-          }
-        }
-
-        
-        var reloadCSS = require('_css_loader');
-        module.hot.dispose(reloadCSS);
-        module.hot.accept(reloadCSS);
-      
-      }
-    })();
-},{"_css_loader":"../../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.runtime.esm.js"}],"src/components/ListKanban.vue":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
+var _CardCategory = _interopRequireDefault(require("./CardCategory.vue"));
 
 var _axios = _interopRequireDefault(require("axios"));
-
-var _CardCategory = _interopRequireDefault(require("./CardCategory"));
-
-var _formAdd = _interopRequireDefault(require("./formAdd"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -12099,234 +11998,305 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+var _default = {
+  props: ["data", "collectData"],
+  data: function data() {
+    return {
+      valueAddTask: "",
+      checkTask: false
+    };
+  },
+  methods: {
+    requestDelete: function requestDelete(params) {
+      this.$emit("requestDelete", "success");
+    },
+    requestUpdate: function requestUpdate(params) {
+      this.$emit("requestUpdate", "success");
+    },
+    requestMove: function requestMove(params) {
+      this.$emit("requestMove", "success");
+    },
+    addTask: function addTask(category) {
+      if (category === "Backlog") {
+        this.checkTask = true;
+      } else if (category === "Todo") {
+        this.checkTask = true;
+      } else if (category === "Done") {
+        this.checkTask = true;
+      } else if (category === "Completed") {
+        this.checkTask = true;
+      }
+    },
+    saveTask: function saveTask(category) {
+      var _this = this;
+
+      console.log("sssss");
+      var data = this.valueAddTask;
+      (0, _axios.default)({
+        method: "POST",
+        url: "https://lit-mountain-74451.herokuapp.com/tasks",
+        headers: {
+          access_token: localStorage.access_token
+        },
+        data: {
+          title: data,
+          category: category
+        }
+      }).then(function (result) {
+        console.log("ini result");
+        _this.checkTask = false;
+
+        _this.$emit("requestAdd", "success");
+
+        swal("Succesfully Add!", "", "success"); // this.getTask();
+      }).catch(function (err) {
+        console.log(err.response, "oomomo");
+      });
+    },
+    exitTask: function exitTask() {
+      this.checkTask = false;
+    }
+  },
+  computed: {
+    filterData: function filterData() {
+      var data = {};
+      var backlog = this.collectData.filter(function (word) {
+        return word.category === "Backlog";
+      });
+      var todo = this.collectData.filter(function (word) {
+        return word.category === "Todo";
+      });
+      var done = this.collectData.filter(function (word) {
+        return word.category === "Done";
+      });
+      var completed = this.collectData.filter(function (word) {
+        return word.category === "Completed";
+      }); //   filterBacklog.push(backlog);
+
+      data.Backlog = backlog;
+      data.Todo = todo;
+      data.Done = done;
+      data.Completed = completed;
+      console.log(data);
+      return data;
+    }
+  },
+  created: function created() {
+    console.log(this.data, "cek data");
+  },
+  components: {
+    CardCategory: _CardCategory.default
+  }
+};
+exports.default = _default;
+        var $1a7af1 = exports.default || module.exports;
+      
+      if (typeof $1a7af1 === 'function') {
+        $1a7af1 = $1a7af1.options;
+      }
+    
+        /* template */
+        Object.assign($1a7af1, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", [
+      _c("div", { staticStyle: { "background-color": "white" } }, [
+        _c("div", {}, [
+          _c(
+            "div",
+            {
+              staticClass: "cardHeader",
+              staticStyle: { "background-color": "#042549", padding: "0px" }
+            },
+            [
+              _c(
+                "h5",
+                {
+                  staticClass: "card-title",
+                  staticStyle: {
+                    margin: "0",
+                    color: "white",
+                    padding: "15px 20px"
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n            " + _vm._s(_vm.data.name) + "\n          "
+                  )
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "content-Backlog",
+              staticStyle: {
+                "background-color": "#edeef1",
+                overflow: "scroll",
+                width: "auto",
+                height: "480px"
+              }
+            },
+            [
+              _vm._l(_vm.filterData[_vm.data.name], function(item) {
+                return _c("CardCategory", {
+                  key: item.id,
+                  attrs: { listTask: item, categoryTask: item.category },
+                  on: {
+                    requestDelete: _vm.requestDelete,
+                    requestUpdate: _vm.requestUpdate,
+                    requestMove: _vm.requestMove
+                  }
+                })
+              }),
+              _vm._v(" "),
+              _vm.checkTask
+                ? _c("div", { staticClass: "form-add-Backlog" }, [
+                    _c("textarea", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.valueAddTask,
+                          expression: "valueAddTask"
+                        }
+                      ],
+                      staticStyle: {
+                        "background-color": "white",
+                        "margin-left": "15px",
+                        "margin-top": "10px",
+                        width: "300px"
+                      },
+                      domProps: { value: _vm.valueAddTask },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.valueAddTask = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                : _vm._e()
+            ],
+            2
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "add-todo",
+              staticStyle: {
+                "background-color": "#042549",
+                padding: "10px 10px"
+              }
+            },
+            [
+              !_vm.checkTask
+                ? _c("div", { staticClass: "add-add" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-secondary",
+                        staticStyle: { margin: "0" },
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            return _vm.addTask(_vm.data.name)
+                          }
+                        }
+                      },
+                      [_vm._v("\n              Add Task\n            ")]
+                    )
+                  ])
+                : _c("div", { staticClass: "add-add-inside" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-success",
+                        staticStyle: { margin: "0" },
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            return _vm.saveTask(_vm.data.name)
+                          }
+                        }
+                      },
+                      [_vm._v("\n              Save\n            ")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-secondary",
+                        staticStyle: { margin: "0" },
+                        attrs: { type: "button" },
+                        on: { click: _vm.exitTask }
+                      },
+                      [_vm._v("\n              Exit\n            ")]
+                    )
+                  ])
+            ]
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: null,
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$1a7af1', $1a7af1);
+          } else {
+            api.reload('$1a7af1', $1a7af1);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
+},{"./CardCategory.vue":"src/components/CardCategory.vue","axios":"node_modules/axios/index.js","_css_loader":"../../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.runtime.esm.js"}],"src/components/CardKanban.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _Card = _interopRequireDefault(require("./Card.vue"));
+
+var _axios = _interopRequireDefault(require("axios"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 //
 //
 //
@@ -12356,7 +12326,6 @@ var _default = {
   props: ["collectData"],
   data: function data() {
     return {
-      // collectData: [],
       valueAddBacklog: "",
       valueAddTodo: "",
       valueAddDone: "",
@@ -12370,6 +12339,9 @@ var _default = {
     };
   },
   methods: {
+    requestAdd: function requestAdd(params) {
+      this.$emit("requestAdd", "success");
+    },
     requestDelete: function requestDelete(params) {
       this.$emit("requestDelete", "success");
     },
@@ -12378,822 +12350,80 @@ var _default = {
     },
     requestMove: function requestMove(params) {
       this.$emit("requestMove", "success");
-    },
-    addBacklog: function addBacklog() {
-      this.checkBacklog = true;
-    },
-    saveBacklog: function saveBacklog() {
-      var _this = this;
-
-      console.log("sssss");
-      var Backlog = this.valueAddBacklog;
-      var category = "Backlog";
-      (0, _axios.default)({
-        method: "POST",
-        url: "http://localhost:3000/tasks",
-        headers: {
-          access_token: localStorage.access_token
-        },
-        data: {
-          title: Backlog,
-          category: category
-        }
-      }).then(function (result) {
-        console.log("ini result");
-        _this.checkBacklog = false;
-
-        _this.$emit("requestAdd", "success");
-
-        swal("Succesfully Add!", "", "success"); // this.getTask();
-      }).catch(function (err) {
-        console.log(err.response, "oomomo");
-      });
-    },
-    exitBacklog: function exitBacklog() {
-      this.checkBacklog = false;
-    },
-    exitEditBacklog: function exitEditBacklog() {
-      this.checkUpdateBacklog = false;
-    },
-    addTodo: function addTodo() {
-      this.checkTodo = true;
-    },
-    saveTodo: function saveTodo() {
-      var _this2 = this;
-
-      var todo = this.valueAddTodo;
-      var category = "Todo";
-      (0, _axios.default)({
-        method: "POST",
-        url: "http://localhost:3000/tasks",
-        headers: {
-          access_token: localStorage.access_token
-        },
-        data: {
-          title: todo,
-          category: category
-        }
-      }).then(function (result) {
-        _this2.checkTodo = false;
-
-        _this2.$emit("requestAdd", "success");
-
-        swal("Succesfully Add!", "", "success"); // this.getTask();
-      }).catch(function (err) {});
-    },
-    exitTodo: function exitTodo() {
-      this.checkTodo = false;
-    },
-    addDone: function addDone() {
-      this.checkDone = true;
-    },
-    saveDone: function saveDone() {
-      var _this3 = this;
-
-      var done = this.valueAddDone;
-      var category = "Done";
-      (0, _axios.default)({
-        method: "POST",
-        url: "http://localhost:3000/tasks",
-        headers: {
-          access_token: localStorage.access_token
-        },
-        data: {
-          title: done,
-          category: category
-        }
-      }).then(function (result) {
-        _this3.checkDone = false;
-
-        _this3.$emit("requestAdd", "success");
-
-        swal("Succesfully Add!", "", "success"); // this.getTask();
-      }).catch(function (err) {});
-    },
-    exitDone: function exitDone() {
-      this.checkDone = false;
-    },
-    addCompleted: function addCompleted() {
-      this.checkCompleted = true;
-    },
-    saveCompleted: function saveCompleted() {
-      var _this4 = this;
-
-      var completed = this.valueAddCompleted;
-      var category = "Completed";
-      (0, _axios.default)({
-        method: "POST",
-        url: "http://localhost:3000/tasks",
-        headers: {
-          access_token: localStorage.access_token
-        },
-        data: {
-          title: completed,
-          category: category
-        }
-      }).then(function (result) {
-        _this4.checkCompleted = false;
-
-        _this4.$emit("requestAdd", "success");
-
-        swal("Succesfully Add!", "", "success"); // this.getTask();
-      }).catch(function (err) {});
-    },
-    exitCompleted: function exitCompleted() {
-      this.checkCompleted = false;
-    },
-    filterData: function filterData(category) {
-      var filterData = [];
-
-      for (var i = 0; i < this.collectData.length; i++) {
-        if (this.collectData[i].category === category) {
-          filterData.push(this.collectData[i]);
-        }
-      }
-
-      return filterData;
     }
   },
   computed: {
-    BacklogData: function BacklogData() {
-      console.log("Task");
-      return this.filterData("Backlog");
-    },
-    todoData: function todoData() {
-      console.log("todo");
-      return this.filterData("Todo");
-    },
-    doneData: function doneData() {
-      console.log("done");
-      return this.filterData("Done");
-    },
-    completedData: function completedData() {
-      console.log("completed");
-      return this.filterData("Completed");
+    getData: function getData() {
+      var data = [{
+        name: "Backlog"
+      }, {
+        name: "Todo"
+      }, {
+        name: "Done"
+      }, {
+        name: "Completed"
+      }];
+      return data;
     }
   },
   created: function created() {},
   components: {
-    CardCategory: _CardCategory.default,
-    formAdd: _formAdd.default
+    Card: _Card.default
   }
 };
 exports.default = _default;
-        var $a00cfa = exports.default || module.exports;
+        var $63e794 = exports.default || module.exports;
       
-      if (typeof $a00cfa === 'function') {
-        $a00cfa = $a00cfa.options;
+      if (typeof $63e794 === 'function') {
+        $63e794 = $63e794.options;
       }
     
         /* template */
-        Object.assign($a00cfa, (function () {
+        Object.assign($63e794, (function () {
           var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      staticStyle: { "margin-top": "20px", "justify-content": "space-around" },
-      attrs: { id: "list-kanban" }
-    },
-    [
-      _c(
-        "div",
-        { staticStyle: { "margin-left": "10px", "margin-right": "10px" } },
-        [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-sm-3" }, [
-              _c("div", { staticStyle: { "background-color": "white" } }, [
-                _c("div", {}, [
-                  _vm._m(0),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "content-Backlog",
-                      staticStyle: {
-                        "background-color": "#edeef1",
-                        overflow: "scroll",
-                        width: "auto",
-                        height: "480px"
-                      }
-                    },
-                    [
-                      _vm._l(_vm.BacklogData, function(item) {
-                        return _c("CardCategory", {
-                          key: item.id,
-                          attrs: {
-                            listTask: item,
-                            categoryTask: item.category
-                          },
-                          on: {
-                            requestDelete: _vm.requestDelete,
-                            requestUpdate: _vm.requestUpdate,
-                            requestMove: _vm.requestMove
-                          }
-                        })
-                      }),
-                      _vm._v(" "),
-                      _vm.checkBacklog
-                        ? _c("div", { staticClass: "form-add-Backlog" }, [
-                            _c("textarea", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.valueAddBacklog,
-                                  expression: "valueAddBacklog"
-                                }
-                              ],
-                              staticStyle: {
-                                "background-color": "white",
-                                "margin-left": "15px",
-                                "margin-top": "10px",
-                                width: "300px"
-                              },
-                              domProps: { value: _vm.valueAddBacklog },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.valueAddBacklog = $event.target.value
-                                }
-                              }
-                            })
-                          ])
-                        : _vm._e()
-                    ],
-                    2
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "add-todo",
-                      staticStyle: {
-                        "background-color": "#042549",
-                        padding: "10px 10px"
-                      }
-                    },
-                    [
-                      !_vm.checkBacklog
-                        ? _c("div", { staticClass: "add-add" }, [
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-secondary",
-                                staticStyle: { margin: "0" },
-                                attrs: { type: "button" },
-                                on: { click: _vm.addBacklog }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                  Add Task\n                "
-                                )
-                              ]
-                            )
-                          ])
-                        : _c("div", { staticClass: "add-add-inside" }, [
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-success",
-                                staticStyle: { margin: "0" },
-                                attrs: { type: "button" },
-                                on: {
-                                  click: function($event) {
-                                    $event.preventDefault()
-                                    return _vm.saveBacklog($event)
-                                  }
-                                }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                  Save\n                "
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-secondary",
-                                staticStyle: { margin: "0" },
-                                attrs: { type: "button" },
-                                on: { click: _vm.exitBacklog }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                  Exit\n                "
-                                )
-                              ]
-                            )
-                          ])
-                    ]
-                  )
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-sm-3" }, [
-              _c("div", { staticStyle: { "background-color": "white" } }, [
-                _c("div", {}, [
-                  _vm._m(1),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "content-todo",
-                      staticStyle: {
-                        "background-color": "#edeef1",
-                        overflow: "scroll",
-                        width: "auto",
-                        height: "480px"
-                      }
-                    },
-                    [
-                      _vm._l(_vm.todoData, function(item) {
-                        return _c("CardCategory", {
-                          key: item.id,
-                          attrs: {
-                            listTask: item,
-                            categoryTask: item.category
-                          },
-                          on: {
-                            requestDelete: _vm.requestDelete,
-                            requestUpdate: _vm.requestUpdate,
-                            requestMove: _vm.requestMove
-                          }
-                        })
-                      }),
-                      _vm._v(" "),
-                      _vm.checkTodo
-                        ? _c("div", { staticClass: "form-add-todo" }, [
-                            _c("textarea", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.valueAddTodo,
-                                  expression: "valueAddTodo"
-                                }
-                              ],
-                              staticStyle: {
-                                "background-color": "white",
-                                "margin-left": "15px",
-                                "margin-top": "10px",
-                                width: "300px"
-                              },
-                              domProps: { value: _vm.valueAddTodo },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.valueAddTodo = $event.target.value
-                                }
-                              }
-                            })
-                          ])
-                        : _vm._e()
-                    ],
-                    2
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "add-todo",
-                      staticStyle: {
-                        "background-color": "#042549",
-                        padding: "10px 10px"
-                      }
-                    },
-                    [
-                      !_vm.checkTodo
-                        ? _c("div", { staticClass: "add-add" }, [
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-secondary",
-                                staticStyle: { margin: "0" },
-                                attrs: { type: "button" },
-                                on: { click: _vm.addTodo }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                  Add Task\n                "
-                                )
-                              ]
-                            )
-                          ])
-                        : _c("div", { staticClass: "add-add-inside" }, [
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-success",
-                                staticStyle: { margin: "0" },
-                                attrs: { type: "button" },
-                                on: {
-                                  click: function($event) {
-                                    $event.preventDefault()
-                                    return _vm.saveTodo($event)
-                                  }
-                                }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                  Save\n                "
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-secondary",
-                                staticStyle: { margin: "0" },
-                                attrs: { type: "button" },
-                                on: { click: _vm.exitTodo }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                  Exit\n                "
-                                )
-                              ]
-                            )
-                          ])
-                    ]
-                  )
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-sm-3" }, [
-              _c("div", { staticStyle: { "background-color": "white" } }, [
-                _c("div", {}, [
-                  _vm._m(2),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "content-done",
-                      staticStyle: {
-                        "background-color": "#edeef1",
-                        overflow: "scroll",
-                        width: "auto",
-                        height: "480px"
-                      }
-                    },
-                    [
-                      _vm._l(_vm.doneData, function(item) {
-                        return _c("CardCategory", {
-                          key: item.id,
-                          attrs: {
-                            listTask: item,
-                            categoryTask: item.category
-                          },
-                          on: {
-                            requestDelete: _vm.requestDelete,
-                            requestUpdate: _vm.requestUpdate,
-                            requestMove: _vm.requestMove
-                          }
-                        })
-                      }),
-                      _vm._v(" "),
-                      _vm.checkDone
-                        ? _c("div", { staticClass: "form-add-done" }, [
-                            _c("textarea", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.valueAddDone,
-                                  expression: "valueAddDone"
-                                }
-                              ],
-                              staticStyle: {
-                                "background-color": "white",
-                                "margin-left": "15px",
-                                "margin-top": "10px",
-                                width: "300px"
-                              },
-                              domProps: { value: _vm.valueAddDone },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.valueAddDone = $event.target.value
-                                }
-                              }
-                            })
-                          ])
-                        : _vm._e()
-                    ],
-                    2
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "add-done",
-                      staticStyle: {
-                        "background-color": "#042549",
-                        padding: "10px 10px"
-                      }
-                    },
-                    [
-                      !_vm.checkDone
-                        ? _c("div", { staticClass: "add-add" }, [
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-secondary",
-                                staticStyle: { margin: "0" },
-                                attrs: { type: "button" },
-                                on: { click: _vm.addDone }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                  Add Task\n                "
-                                )
-                              ]
-                            )
-                          ])
-                        : _c("div", { staticClass: "add-add-inside" }, [
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-success",
-                                staticStyle: { margin: "0" },
-                                attrs: { type: "button" },
-                                on: {
-                                  click: function($event) {
-                                    $event.preventDefault()
-                                    return _vm.saveDone($event)
-                                  }
-                                }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                  Save\n                "
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-secondary",
-                                staticStyle: { margin: "0" },
-                                attrs: { type: "button" },
-                                on: { click: _vm.exitDone }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                  Exit\n                "
-                                )
-                              ]
-                            )
-                          ])
-                    ]
-                  )
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-sm-3" }, [
-              _c("div", { staticStyle: { "background-color": "white" } }, [
-                _c("div", {}, [
-                  _vm._m(3),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "content-completed",
-                      staticStyle: {
-                        "background-color": "#edeef1",
-                        overflow: "scroll",
-                        width: "auto",
-                        height: "480px"
-                      }
-                    },
-                    [
-                      _vm._l(_vm.completedData, function(item) {
-                        return _c("CardCategory", {
-                          key: item.id,
-                          attrs: {
-                            listTask: item,
-                            categoryTask: item.category
-                          },
-                          on: {
-                            requestDelete: _vm.requestDelete,
-                            requestUpdate: _vm.requestUpdate,
-                            requestMove: _vm.requestMove
-                          }
-                        })
-                      }),
-                      _vm._v(" "),
-                      _vm.checkCompleted
-                        ? _c("div", { staticClass: "form-add-completed" }, [
-                            _c("textarea", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.valueAddCompleted,
-                                  expression: "valueAddCompleted"
-                                }
-                              ],
-                              staticStyle: {
-                                "background-color": "white",
-                                "margin-left": "15px",
-                                "margin-top": "10px",
-                                width: "300px"
-                              },
-                              domProps: { value: _vm.valueAddCompleted },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.valueAddCompleted = $event.target.value
-                                }
-                              }
-                            })
-                          ])
-                        : _vm._e()
-                    ],
-                    2
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "add-todo",
-                      staticStyle: {
-                        "background-color": "#042549",
-                        padding: "10px 10px"
-                      }
-                    },
-                    [
-                      !_vm.checkCompleted
-                        ? _c("div", { staticClass: "add-add" }, [
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-secondary",
-                                staticStyle: { margin: "0" },
-                                attrs: { type: "button" },
-                                on: { click: _vm.addCompleted }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                  Add Task\n                "
-                                )
-                              ]
-                            )
-                          ])
-                        : _c("div", { staticClass: "add-add-inside" }, [
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-success",
-                                staticStyle: { margin: "0" },
-                                attrs: { type: "button" },
-                                on: {
-                                  click: function($event) {
-                                    $event.preventDefault()
-                                    return _vm.saveCompleted($event)
-                                  }
-                                }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                  Save\n                "
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-secondary",
-                                staticStyle: { margin: "0" },
-                                attrs: { type: "button" },
-                                on: { click: _vm.exitCompleted }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                  Exit\n                "
-                                )
-                              ]
-                            )
-                          ])
-                    ]
-                  )
-                ])
-              ])
-            ])
-          ])
-        ]
-      )
-    ]
-  )
+  return _c("div", [
+    _c(
+      "div",
+      {
+        staticStyle: {
+          "margin-top": "20px",
+          "justify-content": "space-around"
+        },
+        attrs: { id: "list-kanban" }
+      },
+      [
+        _c(
+          "div",
+          { staticStyle: { "margin-left": "10px", "margin-right": "10px" } },
+          [
+            _c(
+              "div",
+              { staticClass: "row" },
+              _vm._l(_vm.getData, function(data) {
+                return _c("Card", {
+                  key: data.name,
+                  staticClass: "col-sm-3",
+                  attrs: { data: data, collectData: _vm.collectData },
+                  on: {
+                    requestDelete: _vm.requestDelete,
+                    requestUpdate: _vm.requestUpdate,
+                    requestMove: _vm.requestMove,
+                    requestAdd: _vm.requestAdd
+                  }
+                })
+              }),
+              1
+            )
+          ]
+        )
+      ]
+    )
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "cardHeader",
-        staticStyle: { "background-color": "#042549", padding: "0px" }
-      },
-      [
-        _c(
-          "h5",
-          {
-            staticClass: "card-title",
-            staticStyle: { margin: "0", color: "white", padding: "15px 20px" }
-          },
-          [_vm._v("\n                Backlog\n              ")]
-        )
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "cardHeader",
-        staticStyle: { "background-color": "#042549", padding: "0px" }
-      },
-      [
-        _c(
-          "h5",
-          {
-            staticClass: "card-title",
-            staticStyle: { margin: "0", color: "white", padding: "15px 20px" }
-          },
-          [_vm._v("\n                Todo\n              ")]
-        )
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "cardHeader",
-        staticStyle: { "background-color": "#042549", padding: "0px" }
-      },
-      [
-        _c(
-          "h5",
-          {
-            staticClass: "card-title",
-            staticStyle: { margin: "0", color: "white", padding: "15px 20px" }
-          },
-          [_vm._v("\n                Done\n              ")]
-        )
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "cardHeader",
-        staticStyle: { "background-color": "#042549", padding: "0px" }
-      },
-      [
-        _c(
-          "h5",
-          {
-            staticClass: "card-title",
-            staticStyle: { margin: "0", color: "white", padding: "15px 20px" }
-          },
-          [_vm._v("\n                Completed\n              ")]
-        )
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
           return {
@@ -13213,9 +12443,9 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$a00cfa', $a00cfa);
+            api.createRecord('$63e794', $63e794);
           } else {
-            api.reload('$a00cfa', $a00cfa);
+            api.reload('$63e794', $63e794);
           }
         }
 
@@ -13226,7 +12456,65 @@ render._withStripped = true
       
       }
     })();
-},{"axios":"node_modules/axios/index.js","./CardCategory":"src/components/CardCategory.vue","./formAdd":"src/components/formAdd.vue","_css_loader":"../../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.runtime.esm.js"}],"src/App.vue":[function(require,module,exports) {
+},{"./Card.vue":"src/components/Card.vue","axios":"node_modules/axios/index.js","_css_loader":"../../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.runtime.esm.js"}],"src/components/ListKanban.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+//
+//
+var _default = {};
+exports.default = _default;
+        var $ffa16d = exports.default || module.exports;
+      
+      if (typeof $ffa16d === 'function') {
+        $ffa16d = $ffa16d.options;
+      }
+    
+        /* template */
+        Object.assign($ffa16d, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div")
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: null,
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$ffa16d', $ffa16d);
+          } else {
+            api.reload('$ffa16d', $ffa16d);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
+},{"_css_loader":"../../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.runtime.esm.js"}],"src/App.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13241,6 +12529,8 @@ var _Register = _interopRequireDefault(require("./components/Register"));
 var _Login = _interopRequireDefault(require("./components/Login"));
 
 var _NavbarAfterLogin = _interopRequireDefault(require("./components/NavbarAfterLogin"));
+
+var _CardKanban = _interopRequireDefault(require("./components/CardKanban.vue"));
 
 var _ListKanban = _interopRequireDefault(require("./components/ListKanban"));
 
@@ -13274,8 +12564,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
-// import swal from "sweetalert";
-// import NavbarBeforelogin from "./components/NavbarBeforeLogin";
 var _default = {
   name: "app",
   data: function data() {
@@ -13316,7 +12604,7 @@ var _default = {
       console.log("line 43");
       (0, _axios.default)({
         method: "GET",
-        url: "http://localhost:3000/tasks",
+        url: "https://lit-mountain-74451.herokuapp.com/tasks",
         headers: {
           access_token: localStorage.access_token
         }
@@ -13345,18 +12633,19 @@ var _default = {
     Login: _Login.default,
     NavbarAfterLogin: _NavbarAfterLogin.default,
     // NavbarBeforelogin: NavbarBeforelogin,
-    ListKanban: _ListKanban.default
+    ListKanban: _ListKanban.default,
+    CardKanban: _CardKanban.default
   }
 };
 exports.default = _default;
-        var $d6bd30 = exports.default || module.exports;
+        var $8b0db2 = exports.default || module.exports;
       
-      if (typeof $d6bd30 === 'function') {
-        $d6bd30 = $d6bd30.options;
+      if (typeof $8b0db2 === 'function') {
+        $8b0db2 = $8b0db2.options;
       }
     
         /* template */
-        Object.assign($d6bd30, (function () {
+        Object.assign($8b0db2, (function () {
           var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -13397,7 +12686,7 @@ exports.default = _default;
               on: { requestLogout: _vm.requestLogout }
             }),
             _vm._v(" "),
-            _c("ListKanban", {
+            _c("CardKanban", {
               attrs: { collectData: _vm.collectData },
               on: {
                 requestDelete: _vm.requestDelete,
@@ -13419,7 +12708,7 @@ render._withStripped = true
             render: render,
             staticRenderFns: staticRenderFns,
             _compiled: true,
-            _scopeId: "data-v-d6bd30",
+            _scopeId: "data-v-8b0db2",
             functional: undefined
           };
         })());
@@ -13432,9 +12721,9 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$d6bd30', $d6bd30);
+            api.createRecord('$8b0db2', $8b0db2);
           } else {
-            api.reload('$d6bd30', $d6bd30);
+            api.reload('$8b0db2', $8b0db2);
           }
         }
 
@@ -13445,7 +12734,7 @@ render._withStripped = true
       
       }
     })();
-},{"axios":"node_modules/axios/index.js","./components/Register":"src/components/Register.vue","./components/Login":"src/components/Login.vue","./components/NavbarAfterLogin":"src/components/NavbarAfterLogin.vue","./components/ListKanban":"src/components/ListKanban.vue","_css_loader":"../../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.runtime.esm.js"}],"src/main.js":[function(require,module,exports) {
+},{"axios":"node_modules/axios/index.js","./components/Register":"src/components/Register.vue","./components/Login":"src/components/Login.vue","./components/NavbarAfterLogin":"src/components/NavbarAfterLogin.vue","./components/CardKanban.vue":"src/components/CardKanban.vue","./components/ListKanban":"src/components/ListKanban.vue","_css_loader":"../../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.runtime.esm.js"}],"src/main.js":[function(require,module,exports) {
 "use strict";
 
 var _vue = _interopRequireDefault(require("vue"));
@@ -13487,7 +12776,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37161" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "36735" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

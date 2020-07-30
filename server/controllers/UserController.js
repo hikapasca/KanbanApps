@@ -41,7 +41,9 @@ class UserController {
           };
 
           const access_token = jwtSignIn(encodeJWT);
-          return res.status(200).json({ access_token: access_token });
+          return res
+            .status(200)
+            .json({ access_token: access_token, userEmail: checkEmail.email });
         }
       }
     } catch (err) {
@@ -92,7 +94,9 @@ class UserController {
         };
 
         const access_token = jwtSignIn(encodeJWT);
-        return res.status(200).json({ access_token: access_token });
+        return res
+          .status(200)
+          .json({ access_token: access_token, userEmail: checkUser.email });
       } else {
         console.log("fourth step");
         const sendData = {

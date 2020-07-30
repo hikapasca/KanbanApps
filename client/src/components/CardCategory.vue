@@ -29,7 +29,9 @@
                               color: white;
                               background-color: #042549;
                             "
-        >Delete</button>
+        >
+          Delete
+        </button>
         <button
           type="button"
           class="btn"
@@ -40,7 +42,9 @@
                               font-size: 12px;
                               padding: 5px 13px;
                             "
-        >Update</button>
+        >
+          Update
+        </button>
         <button
           type="button"
           class="btn"
@@ -54,10 +58,15 @@
           data-toggle="dropdown"
           aria-haspopup="true"
           aria-expanded="false"
-        >Move</button>
+        >
+          Move
+        </button>
       </p>
     </div>
-    <div v-if="checkUpdateTask" style="background-color: bisque; margin-top: 10px;">
+    <div
+      v-if="checkUpdateTask"
+      style="background-color: bisque; margin-top: 10px;"
+    >
       <div style="margin-left: 15px;">
         <textarea
           v-model="valueEditTask"
@@ -67,8 +76,20 @@
                               width: 270px;
                             "
         ></textarea>
-        <button v-on:click="saveEditTask(listTask.id)" type="button" class="btn btn-success">Save</button>
-        <button v-on:click="exitEditTask" type="button" class="btn btn-secondary">Cancel</button>
+        <button
+          v-on:click="saveEditTask(listTask.id)"
+          type="button"
+          class="btn btn-success"
+        >
+          Save
+        </button>
+        <button
+          v-on:click="exitEditTask"
+          type="button"
+          class="btn btn-secondary"
+        >
+          Cancel
+        </button>
       </div>
     </div>
   </div>
@@ -82,7 +103,7 @@ export default {
     return {
       valueEditTask: "",
       checkTask: false,
-      checkUpdateTask: false
+      checkUpdateTask: false,
     };
   },
   methods: {
@@ -91,13 +112,13 @@ export default {
       axios({
         method: "DELETE",
         url: `https://lit-mountain-74451.herokuapp.com/tasks/${params}`,
-        headers: { access_token: localStorage.access_token }
+        headers: { access_token: localStorage.access_token },
       })
-        .then(result => {
+        .then((result) => {
           this.$emit("requestDelete", "success");
           swal("Succesfully delete!", "", "success");
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err, "ini kegagalan err");
           swal("Forbidden Access!", "", "error");
         });
@@ -107,15 +128,15 @@ export default {
       axios({
         method: "put",
         url: `https://lit-mountain-74451.herokuapp.com/tasks/${params}`,
-        headers: { access_token: localStorage.access_token }
+        headers: { access_token: localStorage.access_token },
       })
-        .then(result => {
+        .then((result) => {
           this.checkUpdateTask = true;
           console.log(result.data);
 
           this.valueEditTask = result.data[1][0].title;
         })
-        .catch(err => {
+        .catch((err) => {
           swal("Forbidden Access!", "", "error");
           console.log(err.response, "ini error update");
         });
@@ -131,21 +152,21 @@ export default {
       }
       axios({
         method: "PUT",
-        url: `https://lit-mountain-74451.herokuapp.com/${id}`,
+        url: `https://lit-mountain-74451.herokuapp.com/tasks/${id}`,
         headers: {
-          access_token: localStorage.access_token
+          access_token: localStorage.access_token,
         },
         data: {
           title: title,
-          category: newCategory
-        }
+          category: newCategory,
+        },
       })
-        .then(result => {
+        .then((result) => {
           console.log("jeje");
           this.$emit("requestMove", "success");
           swal("Succesfully move!", "", "success");
         })
-        .catch(err => {
+        .catch((err) => {
           swal("Forbidden Access!", "", "error");
           console.log(err.response, "ono error");
         });
@@ -154,26 +175,29 @@ export default {
       const updateTitle = this.valueEditTask;
       axios({
         method: "PUT",
-        url: `https://lit-mountain-74451.herokuapp.com/${params}`,
+        url: `https://lit-mountain-74451.herokuapp.com/tasks/${params}`,
         headers: {
-          access_token: localStorage.access_token
+          access_token: localStorage.access_token,
         },
         data: {
           title: updateTitle,
-          category: this.categoryTask
-        }
+          category: this.categoryTask,
+        },
       })
-        .then(result => {
+        .then((result) => {
           this.checkUpdateTask = false;
           this.$emit("requestUpdate", "success");
           swal("Succesfully update!", "", "success");
         })
-        .catch(err => {});
+        .catch((err) => {});
     },
     exitEditTask() {
       this.checkUpdateTask = false;
-    }
-  }
+    },
+  },
+  created() {
+    // console.log(this.listTask, "ini list task");
+  },
 };
 </script>
 
